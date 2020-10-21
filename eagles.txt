@@ -1,14 +1,6 @@
 emre
 sravanthi
-<<<<<<< HEAD
-didier
-philippe
-<<<<<<< HEAD
 Sravanthi Updated
-=======
-=======
 didier Ukanda
 philippe was here
->>>>>>> 2cb7b76db21b9eeb27ea08fa90194325e94f3d70
 Sravanthi
->>>>>>> 2ec3ff00ce29a64543fb401ef0c9390c9fcf6d20
