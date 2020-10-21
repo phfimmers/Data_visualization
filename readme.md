@@ -1,9 +1,10 @@
-### Data Visualization : Real Estate 
+## Data Visualization : Real Estate 
 
 
-## Project Manager : Emre
+### Project Manager: 
+1. Emre
 
-## Collaborators:
+### Collaborators:
 
 1. Philippe
 1. Sravanti
