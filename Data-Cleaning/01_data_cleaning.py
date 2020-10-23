@@ -109,6 +109,9 @@ df.area = df.area.apply(lambda x : np.nan if x=='None' else x)
 # change data type from object to float64
 df.area = df.area.astype('float64')
 
+# replace zero in value of area
+df.area = df.area.replace(0, np.nan)
+
 ## 11.kitchen_has
 # change data type from object to float64
 df.kitchen_has = df.kitchen_has.astype('float64')
@@ -147,6 +150,12 @@ df.terrace_area = df.terrace_area.replace('TRUE', np.nan)
 # change data type from object to float64
 df.terrace_area = df.terrace_area.astype('float64')
 
+# replace zero in value of area
+df.terrace_area = df.terrace_area.replace(0, np.nan)
+
+# replace '1' in value of area
+df.terrace_area = df.terrace_area.replace(1, np.nan)
+
 ## 16.Garden
 # replace string False to False
 df.garden = df.garden.replace('False', False)
@@ -157,6 +166,8 @@ df.garden = df.garden.replace('True', True)
 # change data type from object to bool
 df.garden = df.garden.astype('float64')
 
+df.garden = df.garden.apply(lambda x:1 if x>1 else x)
+
 ## 17.Garden Area
 # replace None to np.nan
 df.garden_area.fillna(value=np.NaN, inplace=True)
@@ -166,6 +177,12 @@ df.garden_area = df.garden_area.apply(lambda x : np.nan if x=='None' else x)
 
 # change data type of rooms_number from object to float64
 df.garden_area = df.garden_area.astype('float64')
+
+# replace zero in value of area
+df.garden_area = df.garden_area.replace(0, np.nan)
+
+# replace '1' in value of area
+df.garden_area = df.garden_area.replace(1, np.nan)
 
 ## 18.land_surface
 # replace None to np.nan
@@ -182,6 +199,12 @@ df.land_surface = df.land_surface.apply(lambda x : np.nan if x=='None' else x)
 
 # change data type of rooms_number from object to float64
 df.land_surface = df.land_surface.astype('float64')
+
+# replace zero in value of area
+df.land_surface = df.land_surface.replace(0, np.nan)
+
+# replace '1' in value of area
+df.land_surface = df.land_surface.replace(1, np.nan)
 
 ## 19.land_plot_surface
 # replace 'yes' from value to 0
@@ -207,11 +230,20 @@ df.facades_number = df.facades_number.apply(lambda x : np.nan if x=='None' else 
 df.facades_number = df.facades_number.astype('float64')
 
 ## 21.swimming_pool_has
- #change numerical data to np.nan
+#change numerical data to np.nan
 df.swimming_pool_has = df.swimming_pool_has.replace(r'\d\.?\d?', np.nan, regex=True)
 
-# replace string False to False
+# replace string 'False' to False
 df.swimming_pool_has = df.swimming_pool_has.replace('False', False)
+
+# replace string 'FALSE' to False
+df.swimming_pool_has = df.swimming_pool_has.replace('FALSE', False)
+
+# replace string 'True' to True
+df.swimming_pool_has = df.swimming_pool_has.replace('True', True)
+
+# replace string 'TRUE' to True
+df.swimming_pool_has = df.swimming_pool_has.replace('TRUE', True)
 
 # change data type from object to bool
 df.swimming_pool_has = df.swimming_pool_has.astype('float64')
@@ -220,7 +252,16 @@ df.swimming_pool_has = df.swimming_pool_has.astype('float64')
 # change numerical data to np.nan
 df.building_state = df.building_state.replace(r'\d\.?\d?', np.nan, regex=True)
 df.building_state = df.building_state.apply(lambda x : np.nan if x=='None' else x)
-df.building_state = df.building_state.replace(np.nan, 'Not specified')
+df.building_state = df['building_state'].replace({
+    'Good':"GOOD",
+    'As new':"AS_NEW",
+    'To renovate':"TO_RENOVATE",
+    'To restore':"TO_RESTORE",
+    '':np.nan,
+    'To be done up':"TO_BE_DONE_UP",
+    "Just renovated":"JUST_RENOVATED",
+    'Not specified':np.nan
+})
 
 
 # General Cleaning
