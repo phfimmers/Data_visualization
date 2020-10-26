@@ -271,7 +271,6 @@ df.building_state = df['building_state'].replace({
 # replace all NaNs in strings with 'unknown'
 df_nanfilled = df.select_dtypes(exclude=['int64','float64']).replace(np.nan, 'unknown')
 df.update(df_nanfilled)
-print(df.info())
 
 # replace all 'None'/'none' strings with uknown
 df_nonefilled = df.select_dtypes(exclude=['int64','float64']).replace('none', 'unknown')
