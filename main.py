@@ -8,8 +8,10 @@ float_col = ['house_is', 'price', 'rooms_number', 'area',
 object_col = ['property_subtype', 'sale', 'building_state']
 
 
-clean_df = standard_cleaning_df('csv_files/properties.csv', float_col, object_col).df
+clean_df = StandardCleaningDataFrame('csv_files/properties.csv', float_col, object_col).df
 
 clean_df.to_csv('csv_files/cleaned_properties.csv')
+
+DataAnalysis(clean_df)
 
 

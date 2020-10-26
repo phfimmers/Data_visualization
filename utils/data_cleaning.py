@@ -3,7 +3,7 @@ import numpy as np
 import re
 
 
-class standard_cleaning_df:
+class StandardCleaningDataFrame:
     def __init__(self, csv_file, float_col, object_col):
         # import csv file as a dataframe
         self.df = pd.read_csv(csv_file, low_memory=False)
