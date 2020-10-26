@@ -9,9 +9,10 @@ class StandardCleaningDataFrame:
         self.df = pd.read_csv(csv_file, low_memory=False)
         self.float_col = float_col
         self.object_col = object_col
+        self.df = self.general_cleaning()
         self.df = self.data_type_cleaning(self.float_col, self.object_col)
         self.df = self.column_cleaning()
-        self.df = self.general_cleaning()
+        
 
     def general_cleaning(self):
         # Remove leading and trailing spaces from column names
@@ -28,18 +29,9 @@ class StandardCleaningDataFrame:
         # replace all 'None'/'none' strings with uknown
         self.df.replace({'none':np.nan,'None': np.nan,"True": True,"TRUE": True,"Yes": True,"False": False,"FALSE": False,"No": False,"NaN": np.nan,
                         "":np.nan,'Not specified': np.nan,'Unknown': np.nan,'unknown':np.nan}, inplace=True)
-        for col in self.df:
-            try:
-                self.df[col] = self.df[col].astype('float64')
-                # replace zero to np.nan
-                if col in ['price', 'area', 'terrace_area', 'garden_area', 'land_surface', 'land_plot_surface']:
-                    self.df[col] = self.df[col].replace(0, np.nan)
-                    self.df[col] = self.df[col].replace(1, np.nan)
-                if col in ['kitchen_has', 'furnished', 'open_fire', 'terrace', 'garden', 'swimming_pool_has']:
-                    self.df[col] = self.df[col].apply(lambda x:1 if x>1 else x)
-            except:
-                self.df[col] = self.df[col].astype('object')
+
         self.df.drop_duplicates(ignore_index = True, inplace = True)
+
         return self.df
 
     def column_cleaning(self):
@@ -140,11 +132,26 @@ class StandardCleaningDataFrame:
 
     def data_type_cleaning(self, float_col, object_col):
 
+
         for col in self.float_col:
             self.df[col] = self.df[col].replace("[^0-9.-]", "", regex=True)
 
         for col in self.object_col:
             self.df[col] = self.df[col].replace("[0-9.-]", "", regex=True)
+
+        for col in self.df:
+
+            try:
+                self.df[col] = self.df[col].astype('float64')
+
+
+                # replace zero to np.nan
+                if col in ['price', 'area', 'terrace_area', 'garden_area', 'land_surface', 'land_plot_surface']:
+                    self.df[col] = self.df[col].replace(1, np.nan)
+                elif col in ['kitchen_has', 'furnished', 'open_fire', 'terrace', 'garden', 'swimming_pool_has']:
+                    self.df[col] = self.df[col].apply(lambda x:1 if x>1 else x)
+            except:
+                self.df[col] = self.df[col].astype('object')
 
         return self.df
 
