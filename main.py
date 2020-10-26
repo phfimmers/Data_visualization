@@ -14,4 +14,8 @@ clean_df.to_csv('csv_files/cleaned_properties.csv')
 
 DataAnalysis(clean_df)
 
+visualization = DataVisualization(clean_df)
+visualization.belgium_house()
+#visualization.wallonia_house()
+#visualization.flanders_house()
 

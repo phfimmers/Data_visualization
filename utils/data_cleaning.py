@@ -40,6 +40,9 @@ class StandardCleaningDataFrame:
         # drop columns 
         self.df.drop(['source', 'hyperlink', 'postcode'], axis = 1, inplace = True)
 
+        # Conversion into float
+        self.df['price'] = pd.to_numeric(self.df['price'], errors='coerce')
+        self.df['area'] = pd.to_numeric(self.df['area'], errors='coerce')
 
         self.df['locality'] = self.df['locality'].astype('object')
         
