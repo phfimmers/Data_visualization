@@ -91,7 +91,12 @@ Hereby follow some previous questions we was clarified by the main results from 
 
 - The Second Graph tells us that:
 
- What are the most expensive municipalities in Belgium? (Average price, median price, price per square meter) What are the most expensive municipalities in Wallonia? (Average price, median price, price per square meter) What are the most expensive municipalities in Flanders? (Average price, median price, price per square meter) What are the less expensive municipalities in Belgium? (Average price, median price, price per square meter) What are the less expensive municipalities in Wallonia? (Average price, median price, price per square meter) What are the less expensive municipalities in Flanders? (Average price, median price, price per square meter) 
+ What are the most expensive municipalities in Belgium? (Average price, median price, price per square meter)
+ What are the most expensive municipalities in Wallonia? (Average price, median price, price per square meter)
+ What are the most expensive municipalities in Flanders? (Average price, median price, price per square meter)
+ What are the less expensive municipalities in Belgium? (Average price, median price, price per square meter)
+ What are the less expensive municipalities in Wallonia? (Average price, median price, price per square meter)
+ What are the less expensive municipalities in Flanders? (Average price, median price, price per square meter) 
  
  ### Presentation
  ![GitHub](https://img.shields.io/badge/presentation-26.10.2020-orange)  Presentation is available [here](https://docs.google.com/presentation/d/1wNy2HfNybQMJ20N0doVz2E7TKnExpVXYTFm42aRJbjw/edit#slide=id.p2).
