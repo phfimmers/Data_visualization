@@ -1,14 +1,34 @@
 from pandas.api.types import infer_dtype
 import pandas as pd
 import numpy as np
+import sys
 
 ##-----------------------------Data Analysis---------------------
 class DataAnalysis:
 	def __init__(self, df):
 		self.df = df
-		self.dtypes_control = self.dtypes_control()
-		self.percent_nan_value = self.percent_nan_value()
-		self.unique_values_per_column = self.unique_values_per_column()
+		self.exit = True
+		self.choices = {
+		"1": self.df.info,
+		"2": self.dtypes_control,   
+		"3": self.percent_nan_value,
+		"4": self.unique_values_per_column,
+		"5": self.quit
+		}
+
+	def display(self):
+		print("""
+			Analysis:
+			1. General information about data
+			2. Check if there are columns with mixed data types 
+			3. Display the percent of NaNs per column
+			4. Unique values per column
+			5. Quit
+			""")
+		while self.exit == True: 
+			choice = input('please enter the number of your request: ')
+			action = self.choices.get(choice, "Your choice is not a valid choice")
+			action()
 
 	def dtypes_control(self):
 		# Check if there are columns with mixed data types ==> NO
@@ -49,3 +69,7 @@ class DataAnalysis:
 		col_name2 = col_name + '_count'
 		print(uniques.loc[0:10, [col_name1, col_name2]])
 
+	def quit(self):
+	    print("Thank you for using our analysis.")
+	    self.exit = False
+	    return self.exit

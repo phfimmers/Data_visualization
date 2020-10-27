@@ -5,6 +5,25 @@ import matplotlib.pyplot as plt
 class DataVisualization:
     def __init__(self, df):
         self.df = df
+        self.exit = True
+        self.choices = {
+		"1": self.belgium_house,
+		"2": self.wallonia_house,   
+		"3": self.flanders_house,
+		"4": False
+		}
+    def display(self):
+        print("""
+            Visualizations:
+            1. The most expensive and the cheapest house by location in Belgium
+            2. The most expensive and the cheapest house by location in Wallonia 
+            3. The most expensive and the cheapest house by location in Flanders
+            4. Quit
+            """)
+        while self.exit == True: 
+            choice = input('please enter the number of your request: ')
+            action = self.choices.get(choice, "Your choice is not a valid choice")
+            action()
 
     def avarage_df(self, house_filtered):
         by_locality = house_filtered.groupby('locality')['price'].mean()
@@ -87,5 +106,8 @@ class DataVisualization:
         self.median_df(house_filtered)
         self.per_square(house_filtered)
 
-
+    def quit(self):
+    	print("Thank you for using our Visualizations.")
+    	self.exit = False
+    	return self.exit    	
 

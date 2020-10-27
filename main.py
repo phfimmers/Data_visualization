@@ -12,10 +12,8 @@ clean_df = StandardCleaningDataFrame('csv_files/properties.csv', float_col, obje
 
 clean_df.to_csv('csv_files/cleaned_properties.csv')
 
-DataAnalysis(clean_df)
+analysis = DataAnalysis(clean_df)
+analysis.display()
 
 visualization = DataVisualization(clean_df)
-visualization.belgium_house()
-#visualization.wallonia_house()
-#visualization.flanders_house()
-
+visualization.display()
